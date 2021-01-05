@@ -2,4 +2,11 @@
 
 {% block content %}
     <h1>{% block title %} Welcome to FlaskBlog, my friend! {% endblock %}</h1>
+	{%for post in posts %}
+	<a href="#">
+	    <h2>{{post['title'] + ' (' + post['content'] + ')'}}</h2>
+		<span class="badge badge-primary">{{post['created']}}</span>
+		<hr>
+		{% endfor%}
+	</a>
 {% endblock %}

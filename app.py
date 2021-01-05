@@ -15,7 +15,7 @@ app = Flask(__name__)
 @app.route('/')
 def index():
     conn = get_db_connection() # открываем подключение к базе данных
-    posts = conn.execute('SELECT * FROM posts').fetchall() # выполняем SQL-запрос. Метод fetchall() достает все строки запроса.
+    posts = conn.execute('SELECT * FROM posts ORDER BY created DESC').fetchall() # выполняем SQL-запрос. Метод fetchall() достает все строки запроса.
     conn.close() # Закрываем подключение к БД
     
     # Передаем объект posts в качестве аргумента, который содержит результаты, полученные из базы данных. 
