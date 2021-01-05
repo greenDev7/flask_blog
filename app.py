@@ -7,7 +7,7 @@ def get_db_connection():
     # устанавливаем атрибут row_factory в sqlite3.Row, чтобы получить доступ 
     # к столбцам на основе имен. Это означает, что подключение к базе 
     # данных будет возвращать строки, которые ведут себя как обычные словари Python    
-    conn.row_factory = sqlite3.Row #
+    conn.row_factory = sqlite3.Row #test
 
 app = Flask(__name__)
 
