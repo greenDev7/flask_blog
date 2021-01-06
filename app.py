@@ -21,6 +21,7 @@ def get_post(post_id):
     return post
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'your secret key' # Секретный ключ должен представлять собой длинную случайную строку
 
 @app.route('/')
 def index():
@@ -36,3 +37,14 @@ def index():
 def post(post_id): # Здесь берем этот id
     post = get_post(post_id) # и по нему достаем пост с помощью функции get_post()
     return render_template('post.html', post = post) # Формируем html-страницу с отображением нашего поста
+    
+
+# Запросы GET принимаются по умолчанию. 
+# Для того чтобы также принимать запросы POST, 
+# которые посылаются браузером при подаче форм,
+# передаем кортеж с приемлемыми типами запросов в аргумент methods декоратора @app.route()
+@app.route('/create', methods = ('GET', 'POST'))
+def create():
+    """ Создает маршрут /create, который принимает запросы GET и POST"""
+    return render_template('create.html')
+    
